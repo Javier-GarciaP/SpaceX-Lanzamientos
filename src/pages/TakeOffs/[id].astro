@@ -1,40 +1,32 @@
 ---
-const { img, numeroLanzamiento, nombreCohete, detalles } = Astro.props;
+import SetionInfo from "../../components/SetionInfo.astro";
 import Layout from "../../layouts/Layout.astro";
-import Setion from "../../components/Setion.astro";
+import { getLatestLaunches, getLaunchBy } from "../../servicies/api";
+
+const { id } = Astro.params;
+
+let launch;
+if (id) {
+  launch = await getLaunchBy({ id });
+}
+
+export async function getStaticPaths() {
+  // llamar una API externa 
+  // para saber todas las ids que debes generar
+
+  const launches = await getLatestLaunches()
+
+  return launches.map(({id}) => ({
+    params: {id: id}
+  }))
+}
 ---
 
 <Layout>
-  <Setion>
-    <div class="container">
-      <div class="imagen">
-        <img src={img} alt=`Imagen del Cohete ${nombreCohete}` />
-      </div>
-      <div class="info">
-        <h1>Numero de Lanzamiento {numeroLanzamiento}</h1>
-        <h2>Cohete: {nombreCohete}</h2>
-        <p>{detalles}</p>
-      </div>
-    </div>
-  </Setion>
+  <SetionInfo
+    img={launch?.links.patch.small}
+    numeroLanzamiento={launch?.flight_number}
+    nombreCohete={launch?.name}
+    detalles={launch?.details}
+  />
 </Layout>
-
-<style>
-  .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .imagen {
-    width: 50%;
-  }
-
-  img {
-    aspect-ratio: 1/1;
-    width: 100%;
-    height: 50%;
-  }
-</style>

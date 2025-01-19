@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -11,6 +12,7 @@ import Header from "../components/Header.astro";
     <link rel="icon" type="image/svg+xml" href="/public/cohete.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>SpaceX Lanzamientos</title>
+    <ClientRouter />
   </head>
   <body>
     <Header />
