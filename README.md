@@ -23,6 +23,7 @@ Primero, clona el repositorio en tu máquina local:
 
 ```bash
 git clone https://github.com/tu_usuario/spaceX-launches-viewer.git
+```
 
 ## Vista previa del portafolio
 ![Vista previa del portafolio](./public/deploy.png)
