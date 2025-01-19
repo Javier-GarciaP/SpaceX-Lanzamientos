@@ -1,0 +1,38 @@
+---
+import Setion from "./Setion.astro";
+import Cards from "./Cards.astro";
+import type { APISpaceX } from "../types/api";
+
+let data: APISpaceX // Inicializar como arreglo vacío
+const API = "https://api.spacexdata.com/v3/launches";
+
+const getData = async () => {
+  const response = await fetch(API);
+  data = await response.json() as APISpaceX;
+};
+
+await getData(); // Asegúrate de esperar los datos
+---
+
+<Setion titulo="Lanzamientos">
+  <div class="grid">
+    {
+      data.map((launch) => (
+        <Cards
+          img={launch.links.mission_patch_small || ""}
+          lanzamiento={launch.launch_success}
+          numero={`#${launch.flight_number}`}
+          nombre={launch.mission_name}
+        />
+      ))
+    }
+  </div>
+</Setion>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+</style>

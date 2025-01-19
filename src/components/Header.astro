@@ -1,0 +1,56 @@
+---
+import Cohete from "../icons/Cohete.astro";
+import Informacion from "../icons/Informacion.astro";
+import Atras from "../icons/Atras.astro";
+
+import Setion from "./Setion.astro";
+---
+
+<Setion>
+  <nav>
+    <h1>Space <span>X</span></h1>
+    <ul>
+      <li><a href="/"><Cohete /> Lanzamientos Principales</a></li>
+      <li><a href="/"><Informacion /> Información</a></li>
+      <li><a href="/"><Atras /> Lanzamientos Anteriores</a></li>
+    </ul>
+  </nav>
+
+  <style>
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      outline: none;
+      color: #000;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    h1 span {
+      color: #3d64ff;
+    }
+  </style>
+</Setion>

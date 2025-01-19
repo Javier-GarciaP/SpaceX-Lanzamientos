@@ -1,0 +1,44 @@
+---
+import Setion from "./Setion.astro";
+---
+
+<Setion>
+  <div>
+    <header>
+      <h1>Space<span>X</span></h1>
+      <p>
+        SpaceX es una empresa privada de exploración espacial fundada por Elon
+        Musk. Esta página web está dedicada a mostrar los lanzamientos más
+        importantes y toda la información clave sobre las misiones espaciales.
+      </p>
+    </header>
+    <aside>
+      <img src="/src/icons/Astronautas.png" alt="Astronautas" />
+    </aside>
+  </div>
+</Setion>
+
+<style>
+  div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  img{
+    aspect-ratio: 1/1;
+    width: 300px;
+    height: auto;
+  }
+
+  p{
+    color: #888;
+  }
+
+  h1 span {
+    color: #3d64ff;
+  }
+</style>
