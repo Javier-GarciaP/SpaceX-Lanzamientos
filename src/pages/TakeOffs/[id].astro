@@ -1,0 +1,40 @@
+---
+const { img, numeroLanzamiento, nombreCohete, detalles } = Astro.props;
+import Layout from "../../layouts/Layout.astro";
+import Setion from "../../components/Setion.astro";
+---
+
+<Layout>
+  <Setion>
+    <div class="container">
+      <div class="imagen">
+        <img src={img} alt=`Imagen del Cohete ${nombreCohete}` />
+      </div>
+      <div class="info">
+        <h1>Numero de Lanzamiento {numeroLanzamiento}</h1>
+        <h2>Cohete: {nombreCohete}</h2>
+        <p>{detalles}</p>
+      </div>
+    </div>
+  </Setion>
+</Layout>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .imagen {
+    width: 50%;
+  }
+
+  img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: 50%;
+  }
+</style>

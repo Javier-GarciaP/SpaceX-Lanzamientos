@@ -1,22 +1,23 @@
 ---
-import Setion from "./Setion.astro"
+import Setion from "./Setion.astro";
 ---
 
 <Setion>
-<footer>
+  <footer>
     <p>Creado por José Javier García 🚀</p>
-</footer>
+  </footer>
 </Setion>
 
 <style>
-    footer{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-    p{
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: auto; /* Empuja el footer al final */
+  }
+  p {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 </style>

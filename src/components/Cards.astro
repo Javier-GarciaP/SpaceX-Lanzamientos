@@ -1,28 +1,33 @@
 ---
-const { img, lanzamiento, numero, nombre } = Astro.props;
-
+const { id, img, lanzamiento, numero, nombre } = Astro.props;
+const direccion = "TakeOffs/" + id
 const statusTakeOffs = lanzamiento ? "Success" : "Fail";
 ---
 
-<div class="card">
-  <img src={img} alt="" />
-  <div class="info">
-    <span
-      class:list={[
-        {
-          fine: lanzamiento,
-          fail: !lanzamiento,
-        },
-      ]}
-    >
-      {statusTakeOffs}
-    </span>
-    <h2 class="bold">Vuelo {numero}</h2>
-    <p>{nombre}</p>
+<a href={direccion}>
+  <div class="card">
+    <img src={img} alt="" />
+    <div class="info">
+      <span
+        class:list={[
+          {
+            fine: lanzamiento,
+            fail: !lanzamiento,
+          },
+        ]}
+      >
+        {statusTakeOffs}
+      </span>
+      <h2 class="bold">Vuelo {numero}</h2>
+      <p>{nombre}</p>
+    </div>
   </div>
-</div>
+</a>
 
 <style>
+  a {
+    text-decoration: none;
+  }
   .card {
     display: flex;
     flex-direction: column;
@@ -34,6 +39,17 @@ const statusTakeOffs = lanzamiento ? "Success" : "Fail";
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     gap: 5px;
     padding: 10px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /* Animación al hacer hover */
+  .card:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Añade una sombra más intensa */
+    cursor: pointer;
+    background-color: #f2f5ff;
   }
 
   .info {
@@ -43,14 +59,13 @@ const statusTakeOffs = lanzamiento ? "Success" : "Fail";
     justify-content: left;
     height: 50%; /* El resto del espacio */
     padding: 4px;
-
+    color: #000;
   }
 
   img {
     aspect-ratio: 1/1;
     width: 100%;
     height: 50%;
-
   }
 
   .fine,
@@ -71,7 +86,7 @@ const statusTakeOffs = lanzamiento ? "Success" : "Fail";
 
   span,
   h2,
-  p{
+  p {
     padding: 10px;
     margin: 0;
   }

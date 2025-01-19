@@ -1,28 +1,21 @@
 ---
 import Setion from "./Setion.astro";
 import Cards from "./Cards.astro";
-import type { APISpaceX } from "../types/api";
+import { getLatestLaunches } from "../servicies/api";
 
-let data: APISpaceX // Inicializar como arreglo vacío
-const API = "https://api.spacexdata.com/v3/launches";
-
-const getData = async () => {
-  const response = await fetch(API);
-  data = await response.json() as APISpaceX;
-};
-
-await getData(); // Asegúrate de esperar los datos
+const launches = await getLatestLaunches();
 ---
 
 <Setion titulo="Lanzamientos">
   <div class="grid">
     {
-      data.map((launch) => (
+      launches.map(({ id, links, success, flight_number, name }) => (
         <Cards
-          img={launch.links.mission_patch_small || ""}
-          lanzamiento={launch.launch_success}
-          numero={`#${launch.flight_number}`}
-          nombre={launch.mission_name}
+          id={id}
+          img={links.patch.small || ""}
+          lanzamiento={success}
+          numero={`#${flight_number}`}
+          nombre={name}
         />
       ))
     }
